@@ -1,0 +1,27 @@
+name: discourse
+summary: Discourse is the 100% open source discussion platform built for the next decade of the Internet.
+description: |
+  Discourse is the 100% open source discussion platform built for the next decade of the Internet.
+  Use it as a mailing list, discussion forum, long-form chat room and more!
+  https://www.discourse.org
+platforms:
+  - kubernetes
+tags:
+  - applications
+  - forum
+bases:
+  - name: ubuntu
+    channel: 20.04/stable
+containers:
+  discourse:
+    resource: discourse-image
+resources:
+  discourse-image:
+    type: oci-image
+    description: Docker image for Discourse
+    auto-fetch: true
+    upstream-source: 'bitnami/discourse:2.6.3'
+requires:
+  db:
+    interface: pgsql
+    limit: 1
